@@ -61,29 +61,32 @@ const MyProfileScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <Text style={styles.headerTitle}>My Profile</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('UserInfoScreen')} style={styles.editInfoButton}>
+          <Text style={styles.editInfoButtonText}>Edit Info</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.userInfoContainer}>
         <Image source={userData.profileLogo} style={styles.userLogo} />
-        <View style={styles.userInfo}>
+        <View style={styles.userDetails}>
           <Text style={styles.userName}>{userData.name}</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('UserInfoScreen')}>
-            <Text style={styles.editInfoButton}>Edit Info</Text>
-          </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.tabs}>
-        <TouchableOpacity
-          style={[styles.tabButton, selectedTab === 'needs' && styles.activeTab]}
-          onPress={() => handleTabChange('needs')}
-        >
-          <Text style={styles.tabText}>Needs</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.tabButton, selectedTab === 'offers' && styles.activeTab]}
-          onPress={() => handleTabChange('offers')}
-        >
-          <Text style={styles.tabText}>Offers</Text>
-        </TouchableOpacity>
-      </View>
+  <TouchableOpacity
+    style={[styles.tabButton, selectedTab === 'needs' && styles.activeTab]}
+    onPress={() => handleTabChange('needs')}
+  >
+    <Text style={styles.tabText}>Needs</Text>
+  </TouchableOpacity>
+  <TouchableOpacity
+    style={[styles.tabButton, selectedTab === 'offers' && styles.activeTab]}
+    onPress={() => handleTabChange('offers')}
+  >
+    <Text style={styles.tabText}>Offers</Text>
+  </TouchableOpacity>
+</View>
 
       <Text style={styles.sectionTitle}>
         {selectedTab === 'needs' ? 'Posted Needs:' : 'Posted Offers:'}
@@ -153,15 +156,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 50,
+    backgroundColor: '#f8f8f8',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
-  title: {
-    fontSize: 24,
+  headerTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 16,
+  },
+  editInfoButton: {
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   userInfoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
   userLogo: {
     width: 50,
@@ -177,22 +195,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  editInfoButton: {
-    marginLeft: 10,
-    color: 'blue',
-    textDecorationLine: 'underline',
-  },
   tabs: {
     flexDirection: 'row',
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
     borderRadius: 8,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#ddd',
   },
   tabButton: {
     flex: 1,
     alignItems: 'center',
     paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
   },
   activeTab: {
     backgroundColor: '#c0c0c0',
@@ -277,6 +294,22 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
+ 
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  editInfoButton: {
+    backgroundColor: '#03A9F4',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 4,
+  },
+  editInfoButtonText: {
+    color: 'white',
+    fontSize: 14,
+  },
+  
 });
 
 export default MyProfileScreen;

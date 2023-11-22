@@ -1,6 +1,7 @@
 // LoginScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; // Assuming you have FontAwesome installed
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -17,45 +18,111 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+  const handleSignUp = () => {
+    // Navigate to SignUp screen
+    navigation.navigate('SignUp');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Welcome to Psoolbr App</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <Button title="Login" onPress={handleLogin} />
-    </View>
+    <ImageBackground
+      source={require('/workspaces/notjusthack.app/src/assets/demo.png')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
+        <Text style={styles.heading}>Welcome to Psoolbr App</Text>
+        <View style={styles.inputContainer}>
+          <FontAwesome name="user" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <FontAwesome name="lock" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+        <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignUp}>
+          <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   heading: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#333',
+    fontFamily: 'Arial',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#555',
+    width: 300,
+  },
+  icon: {
+    fontSize: 20,
+    color: '#555',
+    marginRight: 10,
   },
   input: {
+    flex: 1,
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    margin: 10,
     padding: 10,
-    width: 300,
+    color: '#333',
+    fontFamily: 'Arial',
+  },
+  loginButton: {
+    backgroundColor: '#4CAF50',
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'Arial',
+  },
+  signupText: {
+    marginTop: 20,
+    color: 'blue',
+    fontSize: 16,
+    fontFamily: 'Arial',
   },
 });
 

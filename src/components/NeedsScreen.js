@@ -1,8 +1,8 @@
-// NeedsScreen.js
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useAppContext } from '/src/components/AppContext';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons } from '@expo/vector-icons'; // Make sure to install @expo/vector-icons
 
 const NeedsScreen = () => {
   const navigation = useNavigation();
@@ -12,6 +12,9 @@ const NeedsScreen = () => {
     navigation.navigate('DetailScreen', { item });
   };
 
+  const handleAddClick = () => {
+    navigation.navigate('AddNeedScreen');
+  };
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.itemContainer}
@@ -46,6 +49,9 @@ const NeedsScreen = () => {
 
   return (
     <View style={styles.container}>
+        <View style={styles.header}>
+        <Text style={styles.headerTitle}>Needs</Text>
+      </View>
       <FlatList
         data={postedNeeds}
         keyExtractor={(item, index) => index.toString()}
@@ -127,6 +133,109 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+
+  header: {
+    height: 50,
+    backgroundColor: '#f8f8f8',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  fab: {
+    position: 'absolute',
+    width: 56,
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 20,
+    bottom: 20,
+    backgroundColor: '#03A9F4',
+    borderRadius: 28,
+    elevation: 8,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    marginVertical: 8,
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  itemTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 8,
+  },
+  textSubtitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#666',
+    marginBottom: 2,
+  },
+  itemDescription: {
+    fontSize: 14,
+    color: '#999',
+    marginBottom: 4,
+    lineHeight: 20,
+  },
+  itemSmallText: {
+    fontSize: 12,
+    color: '#999',
+    marginBottom: 4,
+  },
+  tagContainer: {
+    backgroundColor: 'green',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+  },
+  tagTextSmall: {
+    fontSize: 12,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  header: {
+    height: 60,
+    backgroundColor: '#1abc9c',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 7, // Add this line to make the header rounded
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  fab: {
+    position: 'absolute',
+    width: 56,
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 20,
+    bottom: 20,
+    backgroundColor: '#03A9F4',
+    borderRadius: 28,
+    elevation: 8,
+  },
 });
+
 
 export default NeedsScreen;

@@ -6,6 +6,7 @@ import NeedsScreen from '/src/components/NeedsScreen';
 import OffersScreen from '/src/components/OffersScreen';
 import MyProfileScreen from '/src/components/MyProfileScreen';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -65,11 +66,47 @@ const MainScreen = () => {
           </Appbar.Header>
 
           <Tab.Navigator>
-            <Tab.Screen name="Needs" component={NeedsScreen} />
-            <Tab.Screen name="Center" component={() => null} options={{ tabBarButton: () => null }} />
-            <Tab.Screen name="Offers" component={OffersScreen} />
-            <Tab.Screen name="My Profile" component={MyProfileScreen} />
-          </Tab.Navigator>
+  <Tab.Screen 
+    name="Needs" 
+    component={NeedsScreen} 
+    options={{ 
+      headerShown: false,
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="ios-list" color={color} size={size} />
+      ),
+    }} 
+  />
+
+  <Tab.Screen 
+    name="Center" 
+    component={() => null} 
+    options={{ 
+      tabBarButton: () => null,
+    }} 
+  />
+
+  <Tab.Screen 
+    name="Offers" 
+    component={OffersScreen} 
+    options={{ 
+      headerShown: false,
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="ios-gift" color={color} size={size} />
+      ),
+    }} 
+  />
+
+  <Tab.Screen 
+    name="My Profile" 
+    component={MyProfileScreen} 
+    options={{ 
+      headerShown: false,
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="ios-person" color={color} size={size} />
+      ),
+    }} 
+  />
+</Tab.Navigator>
 
           {showPostButtons && (
             <View style={styles.postButtonsContainer}>
@@ -124,6 +161,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
+ 
   centerButton: {
     position: 'absolute',
     bottom: 75,
@@ -167,8 +206,13 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 10,
     borderRadius: 10,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
-  menuItemText: {
+   menuItemText: {
     fontSize: 18,
   },
 });

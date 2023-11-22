@@ -63,9 +63,9 @@ const DetailScreen = ({ route, navigation }) => {
         <TouchableOpacity style={styles.callButton} onPress={() => console.log('Call')}>
           <Text style={styles.buttonText}>Call</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.messageButton} onPress={() => console.log('Message')}>
-          <Text style={styles.buttonText}>Message</Text>
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.messageButton} onPress={() => navigation.navigate('MessageScreen', { user: item.user })}>
+  <Text style={styles.buttonText}>Message</Text>
+</TouchableOpacity>
       </View>
     </ScrollView>
   );
