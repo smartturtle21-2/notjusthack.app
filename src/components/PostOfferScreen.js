@@ -38,7 +38,7 @@ const PostOfferScreen = () => {
       description,
       user: {
         name: 'Demo User',
-        profileLogo: require('/src/assets/demo.png'), // Replace with your image file
+        profileLogo: require('/src/assets/profile.png'), // Replace with your image file
       },
     };
     addPostedOffer(newOffer);
@@ -78,7 +78,7 @@ const PostOfferScreen = () => {
         style={styles.input}
       />
 
-      <Text style={styles.sectionTitle}>Quantity if:</Text>
+      <Text style={styles.sectionTitle}>Quantity (optional):</Text>
       <TextInput
         placeholder="Quantity"
         value={quantity}
@@ -87,7 +87,7 @@ const PostOfferScreen = () => {
         keyboardType="numeric"
       />
 
-      <Text style={styles.sectionTitle}>Image URL (optional):</Text>
+      <Text style={styles.sectionTitle}>Image URL:</Text>
       <TextInput
         placeholder="Image URL"
         value={image}
@@ -133,7 +133,7 @@ const PostOfferScreen = () => {
             {item.user && (
               <View style={styles.userInfoContainer}>
                 <Image source={item.user.profileLogo} style={styles.userLogo} />
-                <Text style={styles.userName}>{item.user.name}</Text>
+                <Text style={styles.userName}>John Doe</Text>
               </View>
             )}
           </TouchableOpacity>
@@ -146,30 +146,38 @@ const PostOfferScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: '#F5F5F5', // Add a background color
   },
   backButton: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+    backgroundColor: '#DDDDDD', // Add a background color
+    padding: 10, // Add padding
+    borderRadius: 5, // Add border radius
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 5,
+    color: '#333333', // Change the text color
   },
   input: {
     borderWidth: 1,
     marginBottom: 10,
     padding: 8,
+    borderColor: '#CCCCCC', // Change the border color
+    borderRadius: 5, // Add border radius
   },
   imagePreview: {
     width: 100,
     height: 100,
     marginBottom: 10,
+    borderRadius: 5, // Add border radius
   },
   postButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#007BFF', // Change the background color
     padding: 10,
     alignItems: 'center',
     borderRadius: 5,
@@ -183,11 +191,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 8,
+    borderColor: '#CCCCCC', // Change the border color
+    backgroundColor: '#FFFFFF', // Add a background color
   },
   postedImage: {
     width: 50,
     height: 50,
     marginTop: 5,
+    borderRadius: 5, // Add border radius
   },
   userInfoContainer: {
     flexDirection: 'row',
@@ -202,6 +213,7 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 16,
+    color: '#333333', // Change the text color
   },
 });
 

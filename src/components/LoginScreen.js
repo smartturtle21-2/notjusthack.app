@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Assuming you have FontAwesome installed
+import GoogleSignInButton from './GoogleSignInButton'; // Import or create your own Google Sign-In button component
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -29,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <Text style={styles.heading}>Welcome to Psoolbr App</Text>
+        <Text style={styles.heading}>Welcome to NAO</Text> {/* "NAO : Need And Offer" final app name not decided */}
         <View style={styles.inputContainer}>
           <FontAwesome name="user" style={styles.icon} />
           <TextInput
@@ -49,9 +50,15 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
           />
         </View>
+
+
         <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+
+        {/* Add the Google Sign-In button here */}
+        <GoogleSignInButton onPress={() => alert('Google Sign-In')} />
+
         <TouchableOpacity onPress={handleSignUp}>
           <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
         </TouchableOpacity>
@@ -59,6 +66,9 @@ const LoginScreen = ({ navigation }) => {
     </ImageBackground>
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -123,6 +133,10 @@ const styles = StyleSheet.create({
     color: 'blue',
     fontSize: 16,
     fontFamily: 'Arial',
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
   },
 });
 

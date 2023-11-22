@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Assuming you have FontAwesome installed
+import GoogleSignInButton from './GoogleSignInButton'; // Import or create your own Google Sign-In button component
 
 const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -42,11 +43,11 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require('/workspaces/notjusthack.app/src/assets/demo.png')}
+      source={require('/workspaces/notjusthack.app/src/assets/demo.png')} 
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <Text style={styles.heading}>Psoolbr App</Text>
+        <Text style={styles.heading}>NAO</Text>  {/* "NAO : Need And Offer" final app name not decided */}
         <Text style={styles.title}>Sign Up</Text>
         <View style={styles.formContainer}>
           <View style={styles.inputContainer}>
@@ -82,6 +83,11 @@ const SignUpScreen = ({ navigation }) => {
           <TouchableOpacity style={styles.signupButton} onPress={handleSignUp}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
+
+           {/* Add the Google Sign-In button here */}
+        <GoogleSignInButton onPress={() => alert('Google Sign-In')} />
+
+
           <TouchableOpacity onPress={handleSignIn}>
             <Text style={styles.signinText}>Already have an account? Sign In</Text>
           </TouchableOpacity>
@@ -168,6 +174,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Arial',
   },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
 });
-
 export default SignUpScreen;

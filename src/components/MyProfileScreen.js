@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useAppContext } from '/src/components/AppContext';
+import profileLogo from '/src/assets/profile.png'; // replace with the actual path to your image file
 
 const MyProfileScreen = () => {
   const {
@@ -62,14 +63,14 @@ const MyProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>My Profile</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('UserInfoScreen')} style={styles.editInfoButton}>
-          <Text style={styles.editInfoButtonText}>Edit Info</Text>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('EditInfoScreen')} style={styles.editInfoButton}>
+  <Text style={styles.editInfoButtonText}>Edit Info</Text>
+</TouchableOpacity>
       </View>
       <View style={styles.userInfoContainer}>
-        <Image source={userData.profileLogo} style={styles.userLogo} />
+        <Image source={profileLogo} style={styles.userLogo} />
         <View style={styles.userDetails}>
-          <Text style={styles.userName}>{userData.name}</Text>
+        <Text style={styles.userName}>John Doe</Text>
         </View>
       </View>
 
@@ -150,8 +151,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#e8eced', // Change this to your desired color
   },
+  
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -185,7 +187,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    marginRight: 10,
+    marginRight: 15,
+    marginTop: 10,
   },
   userDetails: {
     flexDirection: 'row',
@@ -202,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#5f8582',
   },
   tabButton: {
     flex: 1,

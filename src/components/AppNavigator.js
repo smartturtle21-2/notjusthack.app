@@ -11,6 +11,8 @@ import { AppProvider } from './components/AppContext'; // Adjust import path if 
 import DetailScreen from './components/DetailScreen';
 import OfferDetailScreen from './components/OfferDetailScreen';
 import MessageScreen from './components/MessageScreen';
+import CallScreen from './components/CallScreen';
+import EditInfoScreen from './components/EditInfoScreen';
 
 
 
@@ -30,7 +32,11 @@ const AppNavigator = () => {
           <Stack.Screen name="DetailScreen" component={DetailScreen} />
           <Stack.Screen name="OfferDetailScreen" component={OfferDetailScreen} />
           <Stack.Screen name="MessageScreen" component={MessageScreen} />
-          
+          <Stack.Screen name="CallScreen" component={CallScreen} />
+          <Stack.Screen name="EditInfoScreen" component={EditInfoScreen} />
+
+
+
         </Stack.Navigator>
       </AppProvider>
     </NavigationContainer>

@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#e8eced', // Change this to your desired color
   },
   itemContainer: {
     flexDirection: 'row',

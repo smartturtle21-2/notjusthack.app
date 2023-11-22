@@ -10,6 +10,8 @@ import { AppProvider } from './src/components/AppContext';  // Corrected import 
 import DetailScreen from './src/components/DetailScreen';  // Corrected import path
 import OfferDetailScreen from './src/components/OfferDetailScreen';  // Corrected import path
 import MessageScreen from './src/components/MessageScreen';  // Corrected import path
+import CallScreen from './src/components/CallScreen';  // Corrected import path
+import EditInfoScreen from './src/components/EditInfoScreen';  // Corrected import path
 
 
 const Stack = createStackNavigator();
@@ -27,6 +29,9 @@ const App = () => {
           <Stack.Screen name="OfferDetailScreen" component={OfferDetailScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="MessageScreen" component={MessageScreen} />
+          <Stack.Screen name="CallScreen" component={CallScreen} />
+          <Stack.Screen name="EditInfoScreen" component={EditInfoScreen} />
+
         </Stack.Navigator>
       </AppProvider>
     </NavigationContainer>
